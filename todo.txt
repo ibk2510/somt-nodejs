@@ -1,0 +1,21 @@
+Done- npm init
+Done -User Schema created
+Done -Admin/ user module :
+    admin / user signin
+    admin / user signup
+    jwt token authentication
+Milk products
+    -schema
+    -create
+    -get
+    -delete
+    -update
+Subscriptions
+    -schema
+    -create
+    -get
+    -update
+    -delete/ cancellation
+
+
+
