@@ -28,6 +28,6 @@ app.use(bodyParser.json());
 app.use('/api' , authRoutes);
 app.use('/api' , adminRoutes);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("server is running ", process.env.PORT);
 });
