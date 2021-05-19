@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 env.config();
 
 //router
-const authRoutes = require('./routes/auth');
-const adminRoutes = require('./routes/admin/auth')
+const authRoutes = require('./src/routes/auth');
+const adminRoutes = require('./src/routes/admin/auth')
 
 //mongodb connect
 mongoose.connect(
