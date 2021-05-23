@@ -7,8 +7,9 @@ const bodyParser = require("body-parser");
 env.config();
 
 //router
-const authRoutes = require('./src/routes/auth');
-const adminRoutes = require('./src/routes/admin/auth')
+const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin/auth')
+const productRoutes = require('./routes/product')
 
 //mongodb connect
 mongoose.connect(
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 app.use('/api' , authRoutes);
 app.use('/api' , adminRoutes);
+app.use('/api', productRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("server is running ", process.env.PORT);
