@@ -42,7 +42,7 @@ exports.signin = (req, res) => {
     }
     if (user) {
       if (user.authenticate(req.body.password)) {
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY, {
+        const token = jwt.sign({ _id: user._id , role : user.role}, process.env.JWT_KEY, {
           expiresIn: "5h",
         });
         const { _id , firstName, lastName, email, role } = user;
@@ -64,13 +64,4 @@ exports.signin = (req, res) => {
     }
   });
 };
-
-exports.requiredSignIn = (req , res , next) => {
-    const token = req.headers.authorization.split(" ")[1];
-    const user = jwt.verify(token , process.env.JWT_KEY);
-    req.user = user;
-    // console.log(token);
-    next();
-}
-
 
