@@ -45,6 +45,35 @@ exports.createProduct = (req, res) => {
   });
 };
 
-// exports.getAllproducts = (req , res=>{
+exports.getAllproducts = (req , res)=>{
+  Product.find({} , (err , data)=>{
+    if(err){
+      return res.status(400).json({
+        message : "something went wrong"
+      })
+    }
+    if(data){
+      res.status(200).json({
+        data
+      })
+    }
+  })
+}
 
-// })
+exports.deleteOneitem = (req , res)=>{
+  const product_id = req.body.product_id;
+  Product.findByIdAndDelete({_id : product_id},(err, data)=>{
+    if(err){
+      return res.status(400).json({
+        message : "something went wrong"
+      })
+    }
+    if(data){
+      return res.status(200).json({
+        message : "product deleted successfully",
+        data
+      });
+    }
+  })
+
+}

@@ -31,5 +31,5 @@ app.use('/api' , adminRoutes);
 app.use('/api', productRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("server is running ", process.env.PORT);
+  console.log("server is running ", process.env.PORT || 3000);
 });
