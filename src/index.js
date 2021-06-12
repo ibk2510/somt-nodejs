@@ -3,6 +3,8 @@ const env = require("dotenv");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+
+const path = require('path');
 // env --->
 env.config();
 
@@ -10,6 +12,8 @@ env.config();
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin/auth')
 const productRoutes = require('./routes/product')
+//static files
+app.use('/uploads' , express.static(path.join(__dirname, 'uploads')));
 
 //mongodb connect
 mongoose.connect(

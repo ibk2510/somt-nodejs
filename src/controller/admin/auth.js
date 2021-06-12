@@ -66,6 +66,18 @@ exports.signin = (req, res) => {
   });
 };
 
+
+exports.getAllUsers = (req, res) => {
+  User.find({}).exec((err, user) => {
+    if (err) {
+      return res.status(400).json({message: err.message})
+    }
+    if (user) {
+      return res.status(200).json({user : user})
+    }
+  })
+}
+
 exports.requiredSignIn = (req , res , next) => {
     const token = req.headers.authorization.split(" ")[1];
     const user = jwt.verify(token , process.env.JWT_KEY);

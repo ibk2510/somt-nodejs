@@ -1,25 +1,23 @@
 const Product = require("../models/Product");
 const slugify = require("slugify");
+const fs = require('fs');
+var path = require('path');
+
 
 exports.createProduct = (req, res) => {
+  // console.log(path.join(path.dirname(__dirname)));
   const { productName, productType, productDescription, quantity ,  price } =
     req.body;
     let images = [];
     if(req.files.length > 0){
-        images = req.files.map(file => {
-            return { img : file.filename}
-        })
+       images = req.files.map(file => {
+            return {
+              img : file.filename
+            }
+        });
     }
 
-    // console.log(images);
-
-    // res.status(200).json({
-    //     message : "API called successfully " ,
-    //     images,
-    //     productName,
-    //     productType,
-    //     productDescription
-    // })
+    console.log(images.length + "images array");
   const _product = new Product({
     productName,
     slug : slugify(productName),
@@ -27,7 +25,7 @@ exports.createProduct = (req, res) => {
     productDescription,
     quantity,
     price,
-    img : images,
+    productImages : images,
     createdBy: req.user,
   });
 
@@ -40,6 +38,7 @@ exports.createProduct = (req, res) => {
     if (data) {
       return res.status(201).json({
         meaasage: "product created successfully",
+        data : data
       });
     }
   });

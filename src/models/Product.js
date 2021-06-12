@@ -6,10 +6,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    slug :{
-        type : String,
-        required : true,
-        unique : true
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
     },
     productType: {
       type: String,
@@ -21,25 +21,29 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    quantity : {
-      type : Number,
-      required : true
+    quantity: {
+      type: Number,
+      required: true,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
     },
-    image : [
+    productImages: [
       {
-        img : {
-          type : String
-        }
-      }
+        img: {
+          type: String,
+        },
+      },
     ],
-    price : {
-      type : Number,
-      required : true
-    }
+    price: {
+      type: Number,
+      required: true,
+    },
+    cowType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CowDetails",
+    },
   },
   {
     timestamps: true,
