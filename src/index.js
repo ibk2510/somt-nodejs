@@ -12,6 +12,7 @@ env.config();
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin/auth')
 const productRoutes = require('./routes/product')
+const subscriptionRoutes = require('./routes/subscription');
 //static files
 app.use('/uploads' , express.static(path.join(__dirname, 'uploads')));
 
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use('/api' , authRoutes);
 app.use('/api' , adminRoutes);
 app.use('/api', productRoutes);
+app.use('/api' , subscriptionRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("server is running ", process.env.PORT || 3000);

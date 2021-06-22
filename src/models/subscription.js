@@ -21,10 +21,8 @@ const SubscriptionSchema = new mongoose.Schema({
         required : true
     }
 
-
-
 },{
     timestamps : true
 })
 
-module.exports = mongoose.Model('Subscription' , SubscriptionSchema);
+module.exports = mongoose.model('Subscription' , SubscriptionSchema);

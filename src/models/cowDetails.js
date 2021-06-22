@@ -4,9 +4,9 @@ const cowDetails = new mongoose.Schema(
   {
     cowName: {
       type: String,
-      required,
+      required : true,
     },
-    age: {
+    cowAge: {
       type: String,
       required: true,
     },
@@ -17,7 +17,7 @@ const cowDetails = new mongoose.Schema(
     breed: {
       type: String,
     },
-    gesation: {
+    gestation: {
       type: String,
     },
   },
@@ -26,7 +26,7 @@ const cowDetails = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.Model("CowDetails", cowDetails);
+module.exports = mongoose.model("CowDetails", cowDetails);
 
 //farmer
 //cow age
