@@ -17,6 +17,7 @@ exports.createProduct = (req, res) => {
     capacity,
     breed,
     gestation,
+    supplier,
   } = req.body;
 
   // creation of cow object 
@@ -58,7 +59,8 @@ exports.createProduct = (req, res) => {
     price,
     productImages: images,
     createdBy: req.user,
-    cowType : _cow
+    cowType : _cow ,
+    supplier
   });
 
   _product.save((err, data) => {

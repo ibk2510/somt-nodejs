@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("../../models/user");
 const jwt = require("jsonwebtoken");
 
 exports.signup = (req, res) => {
@@ -15,7 +15,6 @@ exports.signup = (req, res) => {
       lastName,
       email,
       password,
-      username: Math.random().toString(),
     });
 
     _user.save((err, data) => {
@@ -42,7 +41,7 @@ exports.signin = (req, res) => {
     }
     if (user) {
       if (user.authenticate(req.body.password)) {
-        const token = jwt.sign({ _id: user._id , role : user.role}, process.env.JWT_KEY, {
+        const token = jwt.sign({ _id: user._id , role : user.role , email : user.email}, process.env.JWT_KEY, {
           expiresIn: "5h",
         });
         const { _id , firstName, lastName, email, role } = user;

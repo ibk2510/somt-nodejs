@@ -1,7 +1,7 @@
 const express = require("express");
-const { requiredSignIn } = require("../commonMiddlewares");
-const { signup, signin } = require("../controller/auth");
-const { validateSignupRequest, isrequestValidated } = require("../validators/auth");
+const { requiredSignIn } = require("../../commonMiddlewares");
+const { signup, signin } = require("../../controller/user/auth");
+const { validateSignupRequest, isrequestValidated } = require("../../validators/auth");
 const router = express.Router();
 
 router.post("/signup", validateSignupRequest, isrequestValidated, signup);

@@ -44,6 +44,10 @@ const ProductSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "CowDetails",
     },
+    supplier : {
+      type : "string",
+      required : true
+    }
   },
   {
     timestamps: true,
