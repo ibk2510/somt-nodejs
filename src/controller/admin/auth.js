@@ -15,13 +15,15 @@ exports.signup = (req, res) => {
       lastName,
       email,
       password,
-      role : "admin"
+      role : "admin",
+      username : Math.random().toString()
     });
 
     _user.save((err, data) => {
       if (err) {
         return res.status(400).json({
           message: "something went wrong",
+          err 
         });
       }
       if (data) {
