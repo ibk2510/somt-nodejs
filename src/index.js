@@ -16,6 +16,7 @@ const farmerAuthRoutes = require('./routes/farmer/auth');
 const adminRoutes = require('./routes/admin/auth')
 const productRoutes = require('./routes/product')
 const subscriptionRoutes = require('./routes/subscription');
+const addressRoutes = require('./routes/address');
 //static files
 app.use('/uploads' , express.static(path.join(__dirname, 'uploads')));
 
@@ -51,6 +52,7 @@ app.use('/api' , adminRoutes);
 app.use('/api' , farmerAuthRoutes);
 app.use('/api', productRoutes);
 app.use('/api' , subscriptionRoutes);
+app.use('/api' , addressRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("server is running ", process.env.PORT || 3000);
