@@ -1,6 +1,7 @@
 const Subscribe = require("../models/subscription");
 const moment = require("moment");
 const User = require("../models/user");
+const Product = require("../models/Product");
 
 exports.subscribe = (req, res) => {
   const { Product, start, end } = req.body;
@@ -26,31 +27,23 @@ exports.subscribe = (req, res) => {
   });
 };
 
-exports.getAllSubscribtions = (req, res) => {
+exports.getAllSubscribtions = async (req, res) => {
   // const sub_data;
-  Subscribe.find({}).populate("Product").exec(function(err ,data){
-    if (err) {
+  await Subscribe.find()
+    .populate({ path: 'Product', model: Product })
+    .populate({ path: 'user', model: User })   // await person.populate('stories').populate('fans').execPopulate();
+    .exec(function (err, data) {
+      if (err) {
         return res.status(400).json({
           message: err,
         });
       }
       if (data) {
-          const user =  data[0].user;
-          // console.log(user);
-          User.find(user,(err , user_data)=>{
-            if(err){
-              return res.status(400).json({
-                msg : err
-              })
-            }
-            if(user_data){
-              return res.status(200).json({
-                data,
-                user_data
-              })
-            }
-          })          
+        const user = data[0].user;
+        // console.log(user);
+        return res.status(200).json({
+          data,
+        });
       }
-});
-
+    });
 };
